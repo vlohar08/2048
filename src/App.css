@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+.app {
+  --cell-gap: 2vmin;
+  --cell-size: 12vmin;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app > div:first-child {
+  background: white;
+  border-radius: 5px;
+  padding: var(--cell-gap);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.gameHeader > div {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  column-gap: var(--cell-gap);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.gameHeader h1 {
+  font-size: 8vmin;
+}
+
+.gameHeader > p {
+  margin: 15px 0 30px;
+}
+
+.gameHeader > div > div {
+  background: #bbada0;
+  border-radius: 5px;
+  padding: 5px 15px;
   color: white;
+  text-align: center;
+  height: fit-content;
 }
 
-.App-link {
-  color: #61dafb;
+.gameHeader h4 {
+  font-size: 12px;
+  font-weight: 500;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.gameHeader h5 {
+  font-size: 18px;
+}
+
+.gameBoard {
+  position: relative;
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(4, var(--cell-size));
+  grid-template-rows: repeat(4, var(--cell-size));
+  background: #bbada0;
+  border-radius: 5px;
+  gap: var(--cell-gap);
+  padding: var(--cell-gap);
+}
+
+.cell {
+  background: #cdc1b4;
+  border-radius: 5px;
+}
+
+.tile {
+  /* --x: 1;
+  --y: 0; */
+  position: absolute;
+  /* top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap)); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: red;
+  border-radius: 5px;
+}
+
+.gameFooter {
+  display: grid;
+  grid-template-columns: repeat(3, 10vmin);
+  justify-content: space-between;
+  place-items: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.gameFooter img {
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .app {
+    --cell-size: 18vmin;
   }
 }
