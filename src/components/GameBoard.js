@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
-import { useGameContext, useGameUpdateContext } from "../context/GameContext";
-import addNewTile from "../utils/addNewTile";
+import { useGameData, useUpdateGame } from "../context/GameContext";
+import handleKeyPress from "../utils/handleKeyPress";
 import Tile from "./Tile";
 
 const GameBoard = () => {
-  const updateGame = useGameUpdateContext();
-  const game = useGameContext();
+  const updateGame = useUpdateGame();
+  const gameData = useGameData();
 
   useEffect(() => {
-    document.addEventListener("keyup", (e) => {
+    const handler = (e) => {
       e.stopImmediatePropagation();
-      addNewTile(game.board, updateGame);
-    });
-  }, []);
+      handleKeyPress(e.key, gameData.board, updateGame);
+    };
+    document.addEventListener("keyup", handler);
+    return () => document.removeEventListener("keyup", handler);
+  }, [gameData, updateGame]);
 
   return (
     <div className="gameBoard">
@@ -32,7 +34,7 @@ const GameBoard = () => {
       <div className="cell"></div>
       <div className="cell"></div>
       <div className="cell"></div>
-      {game.board.map((row, y) => {
+      {gameData.board.map((row, y) => {
         return row.map((tile, x) => {
           if (tile !== 0) {
             return <Tile key={`${x}-${y}`} x={x} y={y} number={tile} />;

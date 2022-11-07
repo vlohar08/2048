@@ -1,49 +1,50 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import addNewTile from "../utils/addNewTile";
 
-const GameContext = React.createContext();
-const GameUpdateContext = React.createContext();
+export const GameContext = createContext();
+const GameUpdateContext = createContext();
 
-export const useGameContext = () => {
+export const useGameData = () => {
   return useContext(GameContext);
 };
 
-export const useGameUpdateContext = () => {
+export const useUpdateGame = () => {
   return useContext(GameUpdateContext);
 };
 
 const GameContextProvider = ({ children }) => {
+  const mounted = useRef(false);
   const [gameData, setGameData] = useState({
     score: 0,
     bestScore: 0,
     board: [
-      [0, 2, 0, 0],
-      [0, 4, 0, 0],
-      [0, 0, 4096, 0],
-      [0, 8, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ],
   });
-  // useEffect(() => {
-  //   const localGameData = JSON.parse(localStorage.getItem("2048"));
 
-  //   localGameData && setGameData(localGameData);
-  //   if (!localGameData?.tiles?.length) {
-  //     const x1 = Math.round(Math.random() * (3 - 0) + 0);
-  //     const y1 = Math.round(Math.random() * (3 - 0) + 0);
-  //     const x2 = Math.round(Math.random() * (3 - 0) + 0);
-  //     const y2 = Math.round(Math.random() * (3 - 0) + 0);
-  //     setGameData({
-  //       score: 0,
-  //       bestScore: 0,
-  //       tiles: [
-  //         [0, 0, 0, 0],
-  //         [0, 0, 0, 0],
-  //         [0, 0, 0, 0],
-  //         [0, 0, 0, 0],
-  //       ],
-  //     });
-  //     // localStorage.setItem("2048", JSON.stringify(gameData));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!mounted.current) {
+      const localGameData = JSON.parse(localStorage.getItem("2048"));
+      if (localGameData) {
+        setGameData(localGameData);
+      } else {
+        addNewTile(gameData.board, setGameData);
+        addNewTile(gameData.board, setGameData);
+      }
+      mounted.current = true;
+    } else {
+      localStorage.setItem("2048", JSON.stringify(gameData));
+    }
+  }, [gameData]);
 
   return (
     <GameContext.Provider value={gameData}>

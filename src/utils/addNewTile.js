@@ -5,9 +5,8 @@ const addNewTile = (gameBoard, updateGame) => {
   if (!emptyCell) return;
   const emptyCellX = emptyCell[0];
   const emptyCellY = emptyCell[1];
-  const newGameBoard = [...gameBoard];
-  newGameBoard[emptyCellX][emptyCellY] = 2;
-  updateGame((prevGameData) => ({ ...prevGameData, board: newGameBoard }));
+  gameBoard[emptyCellX][emptyCellY] = 2;
+  updateGame((prevGameData) => ({ ...prevGameData, board: gameBoard }));
 };
 
 export default addNewTile;
