@@ -63,18 +63,24 @@
 }
 
 .tile {
-  /* --x: 1;
-  --y: 0; */
   position: absolute;
-  /* top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
-  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap)); */
   display: flex;
   justify-content: center;
   align-items: center;
   width: var(--cell-size);
   height: var(--cell-size);
-  background-color: red;
   border-radius: 5px;
+  font-size: 4vmin;
+  font-weight: bold;
+  transition: 100ms ease-in-out;
+  animation: popup 100ms;
+}
+
+@keyframes popup {
+  0% {
+    scale: 0%;
+    opacity: 0.1;
+  }
 }
 
 .gameFooter {
@@ -97,4 +103,73 @@
   .app {
     --cell-size: 18vmin;
   }
+  .tile {
+    font-size: 6vmin;
+  }
+}
+
+/*Colored Tiles*/
+.x2 {
+  background-color: #eee4da;
+  color: #727371;
+}
+
+.x4 {
+  background-color: #ece0ca;
+  color: #727371;
+}
+
+.x8 {
+  background-color: #f4b17a;
+  color: white;
+}
+
+.x16 {
+  background-color: #f59575;
+  color: white;
+}
+
+.x32 {
+  background-color: #f57c5f;
+  color: white;
+}
+
+.x64 {
+  background-color: #f65d3b;
+  color: white;
+}
+
+.x128 {
+  background-color: #edce71;
+  color: white;
+}
+
+.x256 {
+  background-color: #edcc63;
+  color: white;
+}
+
+.x512 {
+  background-color: #edc651;
+  color: white;
+}
+
+.x1024 {
+  background-color: #eec744;
+  color: white;
+}
+
+.x2048 {
+  background-color: #ecc230;
+  color: white;
+}
+
+.x4096 {
+  background-color: #fe3d3d;
+  color: white;
+}
+
+.x8192 {
+  background-color: #ff2020;
+  color: white;
 }
