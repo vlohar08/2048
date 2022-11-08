@@ -5,7 +5,7 @@ const slideRight = (board, updateGame) => {
   for (let r = 0; r < board.length; r++) {
     let row = board[r];
     row.reverse();
-    row = handleSlide(row);
+    row = handleSlide(row, updateGame);
     row.reverse();
     board[r] = row;
   }

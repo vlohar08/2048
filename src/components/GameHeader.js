@@ -12,11 +12,11 @@ const GameHeader = () => {
         <h1>2048</h1>
         <div>
           <h4>SCORE</h4>
-          <h5>25008</h5>
+          <h5>{gameData.score}</h5>
         </div>
         <div>
           <h4>BEST</h4>
-          <h5>25008</h5>
+          <h5>{gameData.bestScore}</h5>
         </div>
       </div>
       <p>

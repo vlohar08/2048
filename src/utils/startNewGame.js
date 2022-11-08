@@ -7,6 +7,7 @@ const startNewGame = (updateGame) => {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ];
+  updateGame((prevGameData) => ({ ...prevGameData, score: 0 }));
   addNewTile(board, updateGame);
   addNewTile(board, updateGame);
 };
