@@ -2,14 +2,19 @@ import addNewTile from "./addNewTile";
 import handleSlide from "./handleSlide";
 
 const slideRight = (board, updateGame) => {
+  let isTheSame = true;
   for (let r = 0; r < board.length; r++) {
     let row = board[r];
     row.reverse();
-    row = handleSlide(row, updateGame);
+    let slide = handleSlide(row, updateGame);
+    row = slide.row;
     row.reverse();
     board[r] = row;
+    isTheSame = isTheSame && slide.isTheSame;
   }
-  addNewTile(board, updateGame);
+  if (!isTheSame) {
+    addNewTile(board, updateGame);
+  }
 };
 
 export default slideRight;
