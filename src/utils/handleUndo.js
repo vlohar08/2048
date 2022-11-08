@@ -3,6 +3,7 @@ const handleUndo = (lastMove, updateGame) => {
     ...prevGameData,
     board: lastMove,
     undo: undefined,
+    redo: prevGameData.board,
   }));
 };
 

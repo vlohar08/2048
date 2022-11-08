@@ -29,7 +29,8 @@ const GameContextProvider = ({ children }) => {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-    undo: [],
+    undo: undefined,
+    redo: undefined,
   });
 
   useEffect(() => {
