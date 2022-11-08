@@ -1,6 +1,11 @@
 import React from "react";
+import { useGameData, useUpdateGame } from "../context/GameContext";
+import startNewGame from "../utils/startNewGame";
 
 const GameHeader = () => {
+  const gameData = useGameData();
+  const updateGame = useUpdateGame();
+
   return (
     <div className="gameHeader">
       <div>
@@ -17,6 +22,9 @@ const GameHeader = () => {
       <p>
         Join the numbers and get to the <strong>2048</strong> tile!
       </p>
+      <button type="button" onClick={() => startNewGame(updateGame)}>
+        New Game
+      </button>
     </div>
   );
 };

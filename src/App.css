@@ -24,7 +24,7 @@
 }
 
 .gameHeader > p {
-  margin: 15px 0 30px;
+  margin: 15px 0;
 }
 
 .gameHeader > div > div {
@@ -39,6 +39,19 @@
 .gameHeader h4 {
   font-size: 12px;
   font-weight: 500;
+}
+
+.gameHeader button {
+  background: #bbada0;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  float: right;
+  margin: 0 0 15px 0;
+  cursor: pointer;
 }
 
 .gameHeader h5 {

@@ -11,7 +11,6 @@ const findEmptyCell = (gameBoard) => {
       }
     }
   }
-
   let randomEmptyTile =
     emptyGameTiles[
       Math.round(Math.random() * (emptyGameTiles.length - 1 - 0) + 0)
