@@ -9,6 +9,7 @@ const slideLeft = (board, updateGame) => {
     board[r] = slide.row;
     isTheSame = isTheSame && slide.isTheSame;
   }
+
   if (!isTheSame) {
     addNewTile(board, updateGame);
   }

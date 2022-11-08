@@ -1,12 +1,18 @@
 import React from "react";
+import { useGameData, useUpdateGame } from "../context/GameContext";
+import handleUndo from "../utils/handleUndo";
 
 const GameFooter = () => {
+  const gameData = useGameData();
+  const updateGame = useUpdateGame();
   return (
     <div className="gameFooter">
-      <figure>
-        <img src="/assets/undo-btn.webp" alt="undo" />
-        <figcaption>Undo</figcaption>
-      </figure>
+      {gameData.undo && (
+        <figure onClick={() => handleUndo(gameData.undo, updateGame)}>
+          <img src="/assets/undo-btn.webp" alt="undo" />
+          <figcaption>Undo</figcaption>
+        </figure>
+      )}
       <figure>
         <img src="/assets/play-btn.webp" alt="replay" />
         <figcaption>Replay</figcaption>
