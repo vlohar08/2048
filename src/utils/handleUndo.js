@@ -1,9 +1,14 @@
 const handleUndo = (lastMove, updateGame) => {
   updateGame((prevGameData) => ({
     ...prevGameData,
-    board: lastMove,
+    ...lastMove,
     undo: undefined,
-    redo: prevGameData.board,
+    redo: {
+      board: prevGameData.board,
+      score: prevGameData.score,
+      bestScore: prevGameData.bestScore,
+      replay: prevGameData.replay,
+    },
   }));
 };
 
