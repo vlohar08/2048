@@ -26,6 +26,7 @@ const addNewTile = ({ board, updateGame, undo = false, replay = false }) => {
           replay: prevReplay,
         }
       : prevGameData.undo,
+    redo: undefined,
   }));
 };
 
