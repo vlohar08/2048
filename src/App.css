@@ -70,11 +70,6 @@
   padding: var(--cell-gap);
 }
 
-.cell {
-  background: #cdc1b4;
-  border-radius: 5px;
-}
-
 .tile {
   position: absolute;
   display: flex;
@@ -122,6 +117,11 @@
 }
 
 /*Colored Tiles*/
+.x0 {
+  background-color: #cdc1b4;
+  color: #727371;
+}
+
 .x2 {
   background-color: #eee4da;
   color: #727371;

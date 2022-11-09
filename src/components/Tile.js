@@ -9,7 +9,7 @@ const Tile = ({ x, y, number }) => {
         left: `calc(${x} * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap))`,
       }}
     >
-      {number}
+      {number !== 0 && number}
     </div>
   );
 };
