@@ -22,7 +22,11 @@ const GameHeader = () => {
       <p>
         Join the numbers and get to the <strong>2048</strong> tile!
       </p>
-      <button type="button" onClick={() => startNewGame(updateGame)}>
+      <button
+        disabled={gameData.isReplaying}
+        type="button"
+        onClick={() => startNewGame(updateGame)}
+      >
         New Game
       </button>
     </div>
