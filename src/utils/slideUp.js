@@ -14,7 +14,7 @@ const slideUp = (board, updateGame) => {
     isTheSame = isTheSame && slide.isTheSame;
   }
   if (!isTheSame) {
-    addNewTile(board, updateGame);
+    addNewTile({ board, updateGame, undo: true, replay: true });
   }
 };
 

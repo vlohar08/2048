@@ -1,20 +1,9 @@
-import React, { useEffect } from "react";
-import { useGameData, useUpdateGame } from "../context/GameContext";
-import handleKeyPress from "../utils/handleKeyPress";
+import React from "react";
+import { useGameData } from "../context/GameContext";
 import Tile from "./Tile";
 
 const GameBoard = () => {
-  const updateGame = useUpdateGame();
   const gameData = useGameData();
-
-  useEffect(() => {
-    const handler = (e) => {
-      e.stopImmediatePropagation();
-      handleKeyPress(e.key, gameData.board, updateGame);
-    };
-    document.addEventListener("keyup", handler);
-    return () => document.removeEventListener("keyup", handler);
-  }, [gameData, updateGame]);
 
   return (
     <div className="gameBoard">

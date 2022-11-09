@@ -1,6 +1,7 @@
 import React from "react";
 import { useGameData, useUpdateGame } from "../context/GameContext";
 import handleRedo from "../utils/handleRedo";
+import handleReplay from "../utils/handleReplay";
 import handleUndo from "../utils/handleUndo";
 
 const GameFooter = () => {
@@ -14,10 +15,12 @@ const GameFooter = () => {
           <figcaption>Undo</figcaption>
         </figure>
       )}
-      <figure>
-        <img src="/assets/play-btn.webp" alt="replay" />
-        <figcaption>Replay</figcaption>
-      </figure>
+      {gameData.replay.length > 1 && (
+        <figure onClick={() => handleReplay(gameData.replay, updateGame)}>
+          <img src="/assets/play-btn.webp" alt="replay" />
+          <figcaption>Replay</figcaption>
+        </figure>
+      )}
       {gameData.redo && (
         <figure onClick={() => handleRedo(gameData.redo, updateGame)}>
           <img src="/assets/redo-btn.webp" alt="redo" />

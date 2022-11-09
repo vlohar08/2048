@@ -1,16 +1,19 @@
 import findEmptyCell from "./findEmptyCell";
 
-const addNewTile = (gameBoard, updateGame) => {
-  const emptyCell = findEmptyCell(gameBoard);
-  const prevGameBoard = JSON.parse(localStorage.getItem("2048"))?.board;
+const addNewTile = ({ board, updateGame, undo = false, replay = false }) => {
+  const emptyCell = findEmptyCell(board);
+  const prevBoard = JSON.parse(localStorage.getItem("2048"))?.board;
   if (!emptyCell) return;
   const emptyCellX = emptyCell[0];
   const emptyCellY = emptyCell[1];
-  gameBoard[emptyCellX][emptyCellY] = 2;
+  board[emptyCellX][emptyCellY] = 2;
   updateGame((prevGameData) => ({
     ...prevGameData,
-    board: gameBoard,
-    undo: prevGameBoard,
+    board,
+    replay: replay
+      ? [...prevGameData?.replay, JSON.parse(JSON.stringify(board))]
+      : prevGameData.replay,
+    undo: undo ? prevBoard : prevGameData.undo,
   }));
 };
 

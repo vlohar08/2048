@@ -7,9 +7,15 @@ const startNewGame = (updateGame) => {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ];
-  updateGame((prevGameData) => ({ ...prevGameData, score: 0 }));
-  addNewTile(board, updateGame);
-  addNewTile(board, updateGame);
+  updateGame((prevGameData) => ({
+    ...prevGameData,
+    replay: [],
+    undo: undefined,
+    redo: undefined,
+    score: 0,
+  }));
+  addNewTile({ board, updateGame });
+  addNewTile({ board, updateGame, replay: true });
 };
 
 export default startNewGame;

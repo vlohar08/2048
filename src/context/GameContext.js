@@ -4,10 +4,12 @@ import React, {
   useEffect,
   useRef,
   useState,
+  useCallback,
 } from "react";
 import addNewTile from "../utils/addNewTile";
+import handleKeyPress from "../utils/handleKeyPress";
 
-export const GameContext = createContext();
+const GameContext = createContext();
 const GameUpdateContext = createContext();
 
 export const useGameData = () => {
@@ -29,18 +31,42 @@ const GameContextProvider = ({ children }) => {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
+    beforeReplay: undefined,
+    isReplaying: false,
+    replay: [],
     undo: undefined,
     redo: undefined,
   });
 
+  const gameDataRef = useRef(gameData);
+
+  const handler = useCallback((e) => {
+    e.stopImmediatePropagation();
+    handleKeyPress(e.key, gameDataRef.current.board, setGameData);
+  }, []);
+
   useEffect(() => {
+    document.addEventListener("keyup", handler);
+  }, []);
+
+  useEffect(() => {
+    gameData.isReplaying && document.removeEventListener("keyup", handler);
+    !gameData.isReplaying && document.addEventListener("keyup", handler);
+  }, [gameData.isReplaying]);
+
+  useEffect(() => {
+    gameDataRef.current = gameData;
     if (!mounted.current) {
       const localGameData = JSON.parse(localStorage.getItem("2048"));
       if (localGameData) {
         setGameData(localGameData);
       } else {
-        addNewTile(gameData.board, setGameData);
-        addNewTile(gameData.board, setGameData);
+        addNewTile({ board: gameData.board, updateGame: setGameData });
+        addNewTile({
+          board: gameData.board,
+          updateGame: setGameData,
+          replay: true,
+        });
       }
       mounted.current = true;
     } else {

@@ -11,7 +11,7 @@ const slideLeft = (board, updateGame) => {
   }
 
   if (!isTheSame) {
-    addNewTile(board, updateGame);
+    addNewTile({ board, updateGame, undo: true, replay: true });
   }
 };
 
