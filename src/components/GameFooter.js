@@ -9,24 +9,27 @@ const GameFooter = () => {
   const updateGame = useUpdateGame();
   return (
     <div className="gameFooter">
-      {gameData.undo && (
-        <figure onClick={() => handleUndo(gameData, updateGame)}>
-          <img src="/assets/undo-btn.webp" alt="undo" />
-          <figcaption>Undo</figcaption>
-        </figure>
-      )}
-      {gameData.replay.length > 1 && (
-        <figure onClick={() => handleReplay(gameData, updateGame)}>
-          <img src="/assets/play-btn.webp" alt="replay" />
-          <figcaption>Replay</figcaption>
-        </figure>
-      )}
-      {gameData.redo && (
-        <figure onClick={() => handleRedo(gameData, updateGame)}>
-          <img src="/assets/redo-btn.webp" alt="redo" />
-          <figcaption>Redo</figcaption>
-        </figure>
-      )}
+      <figure
+        style={{ pointerEvents: gameData.undo ? "all" : "none" }}
+        onClick={() => handleUndo(gameData, updateGame)}
+      >
+        <img src="/assets/undo-btn.webp" alt="undo" />
+        <figcaption>Undo</figcaption>
+      </figure>
+      <figure
+        style={{ pointerEvents: gameData.replay.length > 1 ? "all" : "none" }}
+        onClick={() => handleReplay(gameData, updateGame)}
+      >
+        <img src="/assets/play-btn.webp" alt="replay" />
+        <figcaption>Replay</figcaption>
+      </figure>
+      <figure
+        style={{ pointerEvents: gameData.redo ? "all" : "none" }}
+        onClick={() => handleRedo(gameData, updateGame)}
+      >
+        <img src="/assets/redo-btn.webp" alt="redo" />
+        <figcaption>Redo</figcaption>
+      </figure>
     </div>
   );
 };
