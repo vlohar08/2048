@@ -31,7 +31,6 @@ const GameContextProvider = ({ children }) => {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ],
-    beforeReplay: undefined,
     isReplaying: false,
     replay: [],
     undo: undefined,
@@ -59,7 +58,13 @@ const GameContextProvider = ({ children }) => {
     if (!mounted.current) {
       const localGameData = JSON.parse(localStorage.getItem("2048"));
       if (localGameData) {
-        setGameData(localGameData);
+        setGameData({
+          ...localGameData,
+          board:
+            localGameData?.replay[localGameData?.replay?.length - 1] ||
+            localGameData.board,
+          isReplaying: false,
+        });
       } else {
         addNewTile({ board: gameData.board, updateGame: setGameData });
         addNewTile({
