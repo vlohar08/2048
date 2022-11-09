@@ -16,7 +16,7 @@ const GameFooter = () => {
         </figure>
       )}
       {gameData.replay.length > 1 && (
-        <figure onClick={() => handleReplay(gameData.replay, updateGame)}>
+        <figure onClick={() => handleReplay(gameData, updateGame)}>
           <img src="/assets/play-btn.webp" alt="replay" />
           <figcaption>Replay</figcaption>
         </figure>
