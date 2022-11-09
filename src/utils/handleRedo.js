@@ -1,7 +1,8 @@
-const handleRedo = (latestMove, updateGame) => {
+const handleRedo = (gameData, updateGame) => {
+  if (gameData.isReplaying) return;
   updateGame((prevGameData) => ({
     ...prevGameData,
-    ...latestMove,
+    ...gameData.redo,
     undo: {
       board: prevGameData.board,
       score: prevGameData.score,

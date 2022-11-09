@@ -1,7 +1,8 @@
-const handleUndo = (lastMove, updateGame) => {
+const handleUndo = (gameData, updateGame) => {
+  if (gameData.isReplaying) return;
   updateGame((prevGameData) => ({
     ...prevGameData,
-    ...lastMove,
+    ...gameData.undo,
     undo: undefined,
     redo: {
       board: prevGameData.board,

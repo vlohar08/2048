@@ -10,7 +10,7 @@ const GameFooter = () => {
   return (
     <div className="gameFooter">
       {gameData.undo && (
-        <figure onClick={() => handleUndo(gameData.undo, updateGame)}>
+        <figure onClick={() => handleUndo(gameData, updateGame)}>
           <img src="/assets/undo-btn.webp" alt="undo" />
           <figcaption>Undo</figcaption>
         </figure>
@@ -22,7 +22,7 @@ const GameFooter = () => {
         </figure>
       )}
       {gameData.redo && (
-        <figure onClick={() => handleRedo(gameData.redo, updateGame)}>
+        <figure onClick={() => handleRedo(gameData, updateGame)}>
           <img src="/assets/redo-btn.webp" alt="redo" />
           <figcaption>Redo</figcaption>
         </figure>
