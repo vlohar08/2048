@@ -80,8 +80,6 @@
   border-radius: 5px;
   font-size: 4vmin;
   font-weight: bold;
-  transition: 100ms ease-in-out;
-  animation: popup 100ms;
 }
 
 @keyframes popup {
