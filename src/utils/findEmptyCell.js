@@ -1,12 +1,10 @@
-const findEmptyCell = (gameBoard) => {
-  //0,0//0,1//0,2//0,3
-  //1,0//1,1,//1,2//1,3
-  //2,0//2,1//2,2//2,3
-  //3,0//3,1//3,2//3,3
+import handleGameLost from "./handleGameLost";
+
+const findEmptyCell = (board, updateGame) => {
   let emptyGameTiles = [];
   for (let r = 0; r < 4; r++) {
     for (let c = 0; c < 4; c++) {
-      if (gameBoard[r][c] === 0) {
+      if (board[r][c] === 0) {
         emptyGameTiles.push([r, c]);
       }
     }
@@ -15,6 +13,13 @@ const findEmptyCell = (gameBoard) => {
     emptyGameTiles[
       Math.round(Math.random() * (emptyGameTiles.length - 1 - 0) + 0)
     ];
+  if (emptyGameTiles.length === 1) {
+    let newBoard = JSON.parse(JSON.stringify(board));
+    newBoard[emptyGameTiles[0][0]][emptyGameTiles[0][1]] = 2;
+    if (handleGameLost(newBoard)) {
+      updateGame((prevGameData) => ({ ...prevGameData, hasLost: true }));
+    }
+  }
   return randomEmptyTile;
 };
 

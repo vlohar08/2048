@@ -8,6 +8,7 @@ const handleRedo = (gameData, updateGame) => {
       score: prevGameData.score,
       bestScore: prevGameData.bestScore,
       replay: prevGameData.replay,
+      hasLost: false,
     },
     redo: undefined,
   }));

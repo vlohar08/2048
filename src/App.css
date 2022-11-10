@@ -114,6 +114,29 @@
   }
 }
 
+.gameOver {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  color: white;
+  border-radius: 5px;
+}
+
+.gameOver > h2 {
+  font-size: 36px;
+}
+
+.gameOver > h3 {
+  font-size: 30px;
+  color: goldenrod;
+}
+
 /*Colored Tiles*/
 .x0 {
   background-color: #cdc1b4;
@@ -172,15 +195,5 @@
 
 .x2048 {
   background-color: #ecc230;
-  color: white;
-}
-
-.x4096 {
-  background-color: #fe3d3d;
-  color: white;
-}
-
-.x8192 {
-  background-color: #ff2020;
   color: white;
 }

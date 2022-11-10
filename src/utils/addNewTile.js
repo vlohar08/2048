@@ -1,7 +1,7 @@
 import findEmptyCell from "./findEmptyCell";
 
 const addNewTile = ({ board, updateGame, undo = false, replay = false }) => {
-  const emptyCell = findEmptyCell(board);
+  const emptyCell = findEmptyCell(board, updateGame);
   const localGameData = JSON.parse(localStorage.getItem("2048"));
   const prevBoard = localGameData?.board;
   const prevScore = localGameData?.score;
@@ -24,6 +24,7 @@ const addNewTile = ({ board, updateGame, undo = false, replay = false }) => {
           score: prevScore,
           bestScore: prevBestScore,
           replay: prevReplay,
+          hasLost: false,
         }
       : prevGameData.undo,
     redo: undefined,

@@ -1,5 +1,6 @@
 import React from "react";
 import { useGameData } from "../context/GameContext";
+import GameOver from "./GameOver";
 import Tile from "./Tile";
 
 const GameBoard = () => {
@@ -12,6 +13,12 @@ const GameBoard = () => {
           return <Tile key={`${x}-${y}`} x={x} y={y} number={tile} />;
         });
       })}
+      {gameData.hasWon && !gameData.isReplaying && (
+        <GameOver message="You Won!" />
+      )}
+      {gameData.hasLost && !gameData.isReplaying && (
+        <GameOver message="You Lost!" />
+      )}
     </div>
   );
 };

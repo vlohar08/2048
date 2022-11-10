@@ -1,5 +1,5 @@
 const handleUndo = (gameData, updateGame) => {
-  if (gameData.isReplaying) return;
+  if (gameData.isReplaying || gameData.hasWon) return;
   updateGame((prevGameData) => ({
     ...prevGameData,
     ...gameData.undo,
@@ -9,6 +9,7 @@ const handleUndo = (gameData, updateGame) => {
       score: prevGameData.score,
       bestScore: prevGameData.bestScore,
       replay: prevGameData.replay,
+      hasLost: prevGameData.hasLost,
     },
   }));
 };

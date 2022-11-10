@@ -35,6 +35,8 @@ const GameContextProvider = ({ children }) => {
     replay: [],
     undo: undefined,
     redo: undefined,
+    hasWon: false,
+    hasLost: false,
   });
 
   const gameDataRef = useRef(gameData);
@@ -46,12 +48,15 @@ const GameContextProvider = ({ children }) => {
 
   useEffect(() => {
     document.addEventListener("keyup", handler);
-  }, []);
+  }, [handler]);
 
   useEffect(() => {
-    gameData.isReplaying && document.removeEventListener("keyup", handler);
-    !gameData.isReplaying && document.addEventListener("keyup", handler);
-  }, [gameData.isReplaying]);
+    const condition =
+      gameData.isReplaying || gameData.hasWon || gameData.hasLost;
+    condition
+      ? document.removeEventListener("keyup", handler)
+      : document.addEventListener("keyup", handler);
+  }, [gameData.isReplaying, gameData.hasWon, gameData.hasLost, handler]);
 
   useEffect(() => {
     gameDataRef.current = gameData;
@@ -63,6 +68,8 @@ const GameContextProvider = ({ children }) => {
           board:
             localGameData?.replay[localGameData?.replay?.length - 1] ||
             localGameData.board,
+          hasWon: localGameData?.hasWon || false,
+          hasLost: localGameData?.hasLost || false,
           isReplaying: false,
         });
       } else {

@@ -13,6 +13,8 @@ const startNewGame = (updateGame) => {
     undo: undefined,
     redo: undefined,
     score: 0,
+    hasWon: false,
+    hasLost: false,
   }));
   addNewTile({ board, updateGame });
   addNewTile({ board, updateGame, replay: true });
