@@ -8,6 +8,9 @@ import React, {
 } from "react";
 import addNewTile from "../utils/addNewTile";
 import handleKeyPress from "../utils/handleKeyPress";
+import handleTouchSwipes, {
+  removeTouchSupport,
+} from "../utils/handleTouchSwipes";
 
 const GameContext = createContext();
 const GameUpdateContext = createContext();
@@ -47,15 +50,14 @@ const GameContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("keyup", handler);
-  }, [handler]);
-
-  useEffect(() => {
     const condition =
       gameData.isReplaying || gameData.hasWon || gameData.hasLost;
     condition
       ? document.removeEventListener("keyup", handler)
       : document.addEventListener("keyup", handler);
+    condition
+      ? removeTouchSupport()
+      : handleTouchSwipes(gameData.board, setGameData);
   }, [gameData.isReplaying, gameData.hasWon, gameData.hasLost, handler]);
 
   useEffect(() => {
