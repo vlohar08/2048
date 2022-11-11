@@ -9,9 +9,9 @@ const slideLeft = (board, updateGame) => {
     board[r] = slide.row;
     isTheSame = isTheSame && slide.isTheSame;
   }
-
+  //Insert new tile if the existing tiles moved
   if (!isTheSame) {
-    addNewTile({ board, updateGame, undo: true, replay: true });
+    addNewTile({ board, updateGame, addToUndo: true, addToReplay: true });
   }
 };
 

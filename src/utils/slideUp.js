@@ -13,8 +13,9 @@ const slideUp = (board, updateGame) => {
     board[3][c] = row[3];
     isTheSame = isTheSame && slide.isTheSame;
   }
+  //Insert new tile if the existing tiles moved
   if (!isTheSame) {
-    addNewTile({ board, updateGame, undo: true, replay: true });
+    addNewTile({ board, updateGame, addToUndo: true, addToReplay: true });
   }
 };
 

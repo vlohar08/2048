@@ -12,8 +12,9 @@ const slideRight = (board, updateGame) => {
     board[r] = row;
     isTheSame = isTheSame && slide.isTheSame;
   }
+  //Insert new tile if the existing tiles moved
   if (!isTheSame) {
-    addNewTile({ board, updateGame, undo: true, replay: true });
+    addNewTile({ board, updateGame, addToUndo: true, addToReplay: true });
   }
 };
 

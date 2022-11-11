@@ -17,7 +17,7 @@ const startNewGame = (updateGame) => {
     hasLost: false,
   }));
   addNewTile({ board, updateGame });
-  addNewTile({ board, updateGame, replay: true });
+  addNewTile({ board, updateGame, addToReplay: true });
 };
 
 export default startNewGame;

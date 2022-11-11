@@ -134,7 +134,7 @@ const GameContextProvider = ({ children }) => {
         addNewTile({
           board: gameData.board,
           updateGame: setGameData,
-          replay: true,
+          addToReplay: true,
         });
       }
       mounted.current = true;

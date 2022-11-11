@@ -9,10 +9,12 @@ const findEmptyCell = (board, updateGame) => {
       }
     }
   }
+  //Return one random empty Tile
   let randomEmptyTile =
     emptyGameTiles[
       Math.round(Math.random() * (emptyGameTiles.length - 1 - 0) + 0)
     ];
+  //Check if Player lost the game or not
   if (emptyGameTiles.length === 1) {
     let newBoard = JSON.parse(JSON.stringify(board));
     newBoard[emptyGameTiles[0][0]][emptyGameTiles[0][1]] = 2;
