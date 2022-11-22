@@ -9,8 +9,7 @@
 }
 
 body {
+  background-color: burlywood;
   font-family: "Inter", sans-serif;
-  background: #765f8b;
-  color: #756d64;
   overscroll-behavior: contain;
 }

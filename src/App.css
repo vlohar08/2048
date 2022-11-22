@@ -8,8 +8,9 @@
 }
 
 .app > div:first-child {
-  background: white;
-  border-radius: 5px;
+  background: #3d2963;
+  border-radius: 10px;
+  color: white;
   padding: var(--cell-gap);
 }
 
@@ -28,10 +29,9 @@
 }
 
 .gameHeader > div > div {
-  background: #bbada0;
-  border-radius: 5px;
+  background: #57407c;
+  border-radius: 10px;
   padding: 5px 15px;
-  color: white;
   text-align: center;
   height: fit-content;
 }
@@ -42,8 +42,8 @@
 }
 
 .gameHeader button {
-  background: #bbada0;
-  border-radius: 5px;
+  background: #57407c;
+  border-radius: 10px;
   color: white;
   border: none;
   padding: 5px 15px;
@@ -64,8 +64,8 @@
   width: fit-content;
   grid-template-columns: repeat(4, var(--cell-size));
   grid-template-rows: repeat(4, var(--cell-size));
-  background: #bbada0;
-  border-radius: 5px;
+  background: #57407c;
+  border-radius: 10px;
   gap: var(--cell-gap);
   padding: var(--cell-gap);
 }
@@ -77,9 +77,14 @@
   align-items: center;
   width: var(--cell-size);
   height: var(--cell-size);
-  border-radius: 5px;
-  font-size: 4vmin;
-  font-weight: bold;
+  border-radius: 10px;
+  background: #3d2963;
+}
+
+.tile > img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 @keyframes popup {
@@ -100,9 +105,19 @@
   margin-top: 30px;
 }
 
-.gameFooter img {
+.gameFooter svg {
   width: 100%;
+  height: auto;
+  fill: #3d2963;
   cursor: pointer;
+}
+
+.gameFooter svg:hover {
+  fill: #57407c;
+}
+
+.gameFooter p {
+  color: #3d2963;
 }
 
 @media screen and (max-width: 550px) {
@@ -115,17 +130,11 @@
 }
 
 .gameOver {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   position: absolute;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  color: white;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .gameOver > h2 {
@@ -135,65 +144,4 @@
 .gameOver > h3 {
   font-size: 30px;
   color: goldenrod;
-}
-
-/*Colored Tiles*/
-.x0 {
-  background-color: #cdc1b4;
-  color: #727371;
-}
-
-.x2 {
-  background-color: #eee4da;
-  color: #727371;
-}
-
-.x4 {
-  background-color: #ece0ca;
-  color: #727371;
-}
-
-.x8 {
-  background-color: #f4b17a;
-  color: white;
-}
-
-.x16 {
-  background-color: #f59575;
-  color: white;
-}
-
-.x32 {
-  background-color: #f57c5f;
-  color: white;
-}
-
-.x64 {
-  background-color: #f65d3b;
-  color: white;
-}
-
-.x128 {
-  background-color: #edce71;
-  color: white;
-}
-
-.x256 {
-  background-color: #edcc63;
-  color: white;
-}
-
-.x512 {
-  background-color: #edc651;
-  color: white;
-}
-
-.x1024 {
-  background-color: #eec744;
-  color: white;
-}
-
-.x2048 {
-  background-color: #ecc230;
-  color: white;
 }

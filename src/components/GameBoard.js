@@ -13,12 +13,7 @@ const GameBoard = () => {
           return <Tile key={`${x}-${y}`} x={x} y={y} number={tile} />;
         });
       })}
-      {gameData.hasWon && !gameData.isReplaying && (
-        <GameOver message="You Won!" />
-      )}
-      {gameData.hasLost && !gameData.isReplaying && (
-        <GameOver message="You Lost!" />
-      )}
+      <GameOver />
     </div>
   );
 };

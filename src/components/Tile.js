@@ -3,7 +3,7 @@ import React from "react";
 const Tile = ({ x, y, number }) => {
   return (
     <div
-      className={`tile x${number}`}
+      className="tile"
       style={{
         top: `calc(${y} * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap))`,
         left: `calc(${x} * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap))`,
@@ -11,7 +11,9 @@ const Tile = ({ x, y, number }) => {
         animation: number === 0 ? "none" : "popup 100ms",
       }}
     >
-      {number !== 0 && number}
+      {number !== 0 && number !== 2048 && (
+        <img src={`assets/${number}.gif`} alt="tile" />
+      )}
     </div>
   );
 };
